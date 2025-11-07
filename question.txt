@@ -1,0 +1,144 @@
+Publica Academy Logo
+Publica Academy
+Examination Platform
+
+Oluwaseyi Egunjobi
+learner
+Logout
+Taking Exam: AI Engineering - General
+AI Engineering - General
+Exam Window: 12:00 PM - 4:00 PM
+
+Active
+MCQ Section
+Started: 12:21:54 PM WAT
+Theory Section
+Started: 12:35:11 PM WAT
+202:33
+Theory Section
+Started: 12:35:11 PM WAT
+Until exam ends
+Theory Time Window: You can work until the exam ends at 2025-11-07T16:00:00 WAT.
+Theory/Hands-on Section
+Instructions:
+MACHINE LEARNING PRACTICAL EXAM
+Dataset: red-wine.csv Libraries Allowed: pandas, numpy, matplotlib, seaborn, scikit-learn, joblib, fastapi, uvicorn, pydantic
+
+Case Scenario
+You are a Data Scientist working with a wine production company. The company wants to predict the quality class of red wine based on its chemical composition. You are required to build, evaluate, and deploy a classification model that estimates wine quality and helps producers make data-driven production decisions.
+
+1. Preliminary Data Analysis and Cleaning
+Objectives To load, inspect, and clean the dataset.
+
+Instructions
+
+Download, unzip and load the data folder from https://archive.ics.uci.edu/static/public/186/wine+quality.zip. Select the winequality-white.csvfile. Load it as white-wine.csv..
+Display the first 6 rows and dataset shape.
+Check for missing values and handle them appropriately.
+Check for duplicates and remove them if necessary.
+Verify data types and correct them if needed.
+Provide a brief markdown summary of all data cleaning actions taken.
+2. Exploratory Data Analysis (EDA) and Scaling
+Objectives To explore the dataset through univariate analysis on the features,and correlation of target and features only, and prepare it for modeling through scaling.
+
+Instructions
+
+Perform univariate analysis on all numerical features (use any of - histograms, boxplots, or countplots).
+Examine the correlation of each feature with the target variable (quality).
+Map the quality column into categorical classes as follows:
+9- Best
+8 - Best
+7 - Good
+6 - Good
+5 - Average
+4 - Bad
+3 - Bad
+Ensure this mapped categorical target is used for all subsequent modeling steps.
+Split the dataset into features X and target y.
+Apply appropriate scaling (StandardScaler or MinMaxScaler) to all numerical features.
+Do not perform any feature engineering — all features should be used as they are.
+3. Build a Base Classification Model
+Objectives To establish a simple baseline classification model.
+
+Instructions
+
+Split the data into training and testing sets (e.g., 80/20).
+Train a simple model such as Logistic Regression or Decision Tree Classifier.
+Evaluate the model using Accuracy, Precision, Recall, F1-score, and a Confusion Matrix.
+Provide a short interpretation of what the metrics mean in relation to the model’s predictive ability.
+4. Build and Compare Multiple Models
+Objectives To build and compare different classification algorithms and identify the best-performing one.
+
+Instructions
+
+Train at least three different classification models (e.g., Random Forest, K-Nearest Neighbors, Gradient Boosting, Support Vector Machine).
+Evaluate each model using the same set of metrics: Accuracy, Precision, Recall, F1-score, and Confusion Matrix.
+Identify and justify which model performs best based on a balance of these metrics.
+5. Optimize Model Using Randomized Search
+Objectives To fine-tune the best-performing model for improved performance.
+
+Instructions
+
+Use RandomizedSearchCV to perform hyperparameter optimization on the best model.
+Retrain the model using the optimal parameters found.
+Re-evaluate the model using the same classification metrics.
+Provide a short commentary on whether optimization improved model performance and why.
+6. Save Model and Scaler
+Objectives To persist the trained model and scaler for future deployment.
+
+Instructions
+
+Save the optimized model as model.pkl.
+Save the scaler as scaler.pkl using joblib.
+7. Build an API Endpoint for Prediction
+Objectives To deploy the trained model as a REST API using FastAPI - Create a welcome and predict endpoints(GET and POST).
+
+Instructions
+
+Create a file named main.py.
+
+Load the saved model.pkl and scaler.pkl.
+
+Define a Pydantic BaseModel class to accept input data (wine chemical properties).
+
+Create an endpoint /predict that:
+
+Accepts input data in JSON format.
+Applies the same scaling transformation.
+Returns the predicted wine quality class (Best, Good, Average, or Bad).
+Add Swagger documentation for easy testing at /docs.
+
+Ensure clear and consistent JSON responses with error handling.
+
+8. Model Interpretation and Business Impact Report
+Objectives To interpret the model’s results and explain its value to business stakeholders.
+
+Instructions
+
+Write a concise report explaining your approach from data cleaning to model deployment.
+Discuss what your metrics indicate about model performance — e.g., whether the model is more precise for “Good” wines or “Bad” wines.
+Highlight which features most influence wine quality (based on model feature importance or coefficients).
+Explain how your results can help wine producers maximize profit, such as improving production consistency or identifying key quality factors.
+Provide thoughtful, evidence-based interpretation — this section carries more weight in marking.
+Deliverables
+EDA_Notebook.ipynb – all data cleaning, EDA, model building, and evaluation steps.
+main.py – your FastAPI code with the /predict endpoint.
+Swagger Link (.txt) – link or screenshot of your API documentation page.
+model.pkl and scaler.pkl files.
+Report (.txt) – interpretation and business insights.
+Show Less
+Upload Solution Files
+Choose ZIP File
+Upload a ZIP file containing your solution files
+
+GitHub Repository (Optional)
+https://github.com/username/repository (optional)
+Provide a link to your GitHub repository if you've hosted your solution there. This field is optional.
+
+Make sure you have:
+
+Uploaded your solution files (ZIP format)
+Added GitHub repository link (optional)
+Reviewed your work thoroughly
+Submit Theory Section
+← Back to Section Selection
