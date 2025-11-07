@@ -1,0 +1,75 @@
+Concise Report: Wine Quality Modeling and Deployment
+1. Overview of Approach
+
+This project focused on building and deploying a machine learning model to classify white wines by quality using the UCI White Wine dataset. After cleaning and exploring the data, I designed a complete pipeline—from preprocessing to model deployment—aimed at helping producers understand and enhance wine quality.
+
+2. Data Preparation
+
+Cleaning: Removed duplicate entries and confirmed there were no missing values.
+
+Transformation: Converted numeric quality scores into four intuitive categories: Best (9–8), Good (7–6), Average (5), and Bad (4–3).
+
+Scaling: Applied MinMax scaling to normalize feature ranges and improve model performance.
+
+Splitting: Used a stratified train/test split to preserve the class balance for fair evaluation.
+
+3. Modeling and Evaluation
+
+Several models were tested—Logistic Regression, Random Forest, Decision Tree, KNN, SVM, and Naive Bayes.
+Random Forest delivered the best balance of performance and interpretability. The model was fine-tuned using RandomizedSearchCV and saved as model.pkl for deployment, along with the corresponding scaler.
+
+Key Metrics:
+Accuracy, Precision, Recall, and F1-score were used to assess performance.
+
+Precision: Reflects how often predicted “Good” or “Best” wines truly are of that quality — essential for pricing and brand trust.
+
+Recall: Measures how many actual “Bad” wines are correctly identified — critical for quality control.
+
+F1-score: Balances both and was the primary performance metric, especially given the class imbalance.
+
+Interpretation:
+The model showed stronger precision for “Good” wines than for “Bad” ones, meaning when it labels a wine as “Good,” it’s usually correct. However, slightly higher recall for “Bad” wines means the system is cautious in it errs on the side of catching poor-quality batches, which is valuable for avoiding customer dissatisfaction.
+
+4. Key Drivers of Wine Quality
+
+From feature importance analysis and correlation studies, several variables consistently stood out:
+
+Alcohol — higher levels strongly increase perceived quality.
+
+Volatile acidity — negatively impacts taste and overall rating.
+
+Sulphates and Citric acid — contribute positively to stability and flavor balance.
+
+Residual sugar — moderate influence, affecting sweetness and texture.
+
+These insights align with established established principles, validating both the model and its practical use.
+
+5. Business Impact and Recommendations
+
+This model isn’t just a technical tool — it’s a strategic asset for wine producers.
+
+Quality Consistency: Monitor alcohol, volatile acidity, and sulphates during fermentation to maintain batch consistency.
+
+Early Intervention: Predict low-quality outcomes before bottling and adjust production variables proactively.
+
+Process Optimization: Track key features over time to detect drift in fermentation or ingredient quality.
+
+Market Strategy: Confidently segment wines into quality tiers for optimized pricing and branding.
+
+In short, the model helps producers make smarter, data-backed decisions — improving both product quality and profitability.
+
+6. Deployment
+
+The trained model was deployed via FastAPI, with:
+
+base_url/ — a simple welcome route
+
+base_url/predict — a POST endpoint for single or batch predictions
+
+The system scales easily for integration into winery production software, allowing real-time quality predictions as new batches are analyzed.
+
+7. Conclusion
+
+This project demonstrates the power of data science in winemaking. By combining thorough data cleaning, robust modeling, and practical deployment, we created a system that not only predicts wine quality accurately but also explains why.
+
+The most influential features — alcohol, volatile acidity, sulphates, and citric acid — give producers clear levers to pull for higher quality and better profit margins. With further calibration and richer data, this model can evolve into a vital component of smart, consistent, and profitable wine production.

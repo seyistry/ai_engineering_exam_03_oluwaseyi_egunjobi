@@ -1,11 +1,10 @@
 from typing import List, Union
 
 import joblib
-import numpy as np
 import pandas as pd
 import uvicorn
 from fastapi import FastAPI, HTTPException, status
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 
 
 # Expected feature names for the wine dataset (common set)
@@ -62,29 +61,6 @@ app = FastAPI(
     version="1.0",
 )
 
-
-def map_quality_to_label(q: int) -> str:
-    """Map a numeric quality score to a human-friendly class label.
-
-    Assumption: model returns integer-like quality (e.g., 3-9). We map ranges to labels.
-    - 7 and above: Best
-    - 6: Good
-    - 5: Average
-    - 4 and below: Bad
-    """
-    try:
-        q = int(np.round(q))
-    except Exception:
-        return "Unknown"
-    if q >= 7:
-        return "Best"
-    if q == 6:
-        return "Good"
-    if q == 5:
-        return "Average"
-    return "Bad"
-
-
 @app.get("/", tags=["health"])
 def welcome():
     return {"message": "Welcome to the Wine Quality Predictor API. See /docs for Swagger UI."}
@@ -140,11 +116,10 @@ def predict(
     results = []
     for p in preds:
         try:
-            label = map_quality_to_label(p)
             results.append(
-                {"quality": int(np.round(float(p))), "label": label})
+                {"quality": p})
         except Exception:
-            results.append({"quality": None, "label": "Unknown"})
+            results.append({"quality": "Unknown"})
 
     return {"status": "success", "predictions": results}
 
